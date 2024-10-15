@@ -1,0 +1,42 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  @if(!isMobile()){
+  <ion-toolbar>
+    <div class="toolbar-content">
+      <div class="left- content">Setting</div>
+
+      <div class="right-content">
+        <ion-searchbar
+          placeholder="Search for something"
+          class="searchbar"
+        ></ion-searchbar>
+        <ion-icon
+          name="information-circle-outline"
+          class="icon-button"
+        ></ion-icon>
+        <ion-icon name="notifications-outline" class="icon-button"></ion-icon>
+        <div class="avatar">
+          <img src="../../../assets/avatar.svg" alt="User avatar" />
+        </div>
+      </div>
+    </div>
+  </ion-toolbar>
+  }@else {
+  <ion-item lines="none">
+    <ion-menu-button slot="start"></ion-menu-button>
+
+    <ion-title class="ion-text-center" style="flex: 1">Setting</ion-title>
+
+    <ion-avatar slot="end">
+      <img src="../../../assets/avatar.svg" alt="User avatar" />
+    </ion-avatar>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-searchbar
+      class="searchbarmobile"
+      placeholder="Search For Something"
+      style="padding-bottom: 10px"
+    ></ion-searchbar>
+  </ion-item>
+  }
+</ion-header>

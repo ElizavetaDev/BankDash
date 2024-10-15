@@ -1,0 +1,123 @@
+<ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4">
+        <ion-segment value="edit-profile" mode="md">
+          <ion-segment-button value="edit-profile">
+            <ion-label class="label">Edit Profile</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="preferences">
+            <ion-label class="label">Preferences</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="security">
+            <ion-label class="label">Security</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card-content>
+    @if (segmentValue === 'edit-profile') {
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" sizeSm="2">
+          <div class="avatar-container">
+            <ion-avatar>
+              <img alt="Profile picture" src="../../../assets/avatar.svg" />
+            </ion-avatar>
+            <div class="icon-overlay">
+              <ion-icon name="pencil"></ion-icon>
+            </div></div
+        ></ion-col>
+        <ion-col size="12" sizeSm="5">
+          <ion-label>Your Name</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.name"></ion-input>
+          </ion-item>
+          <ion-label>Email</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.email"></ion-input>
+          </ion-item>
+          <ion-label>Date of Birth</ion-label>
+          <ion-item lines="none" (click)="timeOpen = true" datetime="datetime">
+            <ion-label style="color: #9bc0e9">{{
+              profile.dob | date : "mediumDate"
+            }}</ion-label>
+            <ion-icon name="chevron-down-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-label>Permanent Address</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.permanentAddress"></ion-input>
+          </ion-item>
+          <ion-label>Postal Code</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.postalCode"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" sizeSm="5">
+          <ion-label>User Name</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.userName"></ion-input>
+          </ion-item>
+          <ion-label>Password</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.password"></ion-input>
+          </ion-item>
+          <ion-label>Present Address</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.presentAddress"></ion-input>
+          </ion-item>
+          <ion-label>City</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.city"></ion-input>
+          </ion-item>
+          <ion-label>Country</ion-label>
+          <ion-item lines="none">
+            <ion-input [(ngModel)]="profile.country"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        @if (!isMobile()) {
+        <ion-col size="10"></ion-col>
+        <ion-col size="2">
+          <ion-buttons class="custom-button">
+            <ion-button> Save </ion-button>
+          </ion-buttons>
+        </ion-col>
+        }@else {
+        <ion-col>
+          <ion-button expand="block"> Save </ion-button>
+        </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+
+    }
+  </ion-card-content>
+</ion-card>
+
+<ion-modal [isOpen]="timeOpen" (didDismiss)="timeOpen = false">
+  <ng-template>
+    <ion-content>
+      <ion-card
+        style="display: flex; justify-content: center; align-items: center"
+      >
+        <ion-datetime
+          (ionChange)="setDate($event)"
+          id="datetime"
+          presentation="date"
+          [formatOptions]="{
+            date: {
+              day: '2-digit',
+              month: 'long',
+              year: 'numeric'
+            }
+          }"
+        ></ion-datetime>
+      </ion-card>
+    </ion-content>
+  </ng-template>
+</ion-modal>
