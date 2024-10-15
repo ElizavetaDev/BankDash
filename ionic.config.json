@@ -1,0 +1,7 @@
+{
+  "name": "BankDash",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
